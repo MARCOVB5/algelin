@@ -1,0 +1,461 @@
+\documentclass[16pt,openany]{book}
+
+\usepackage[a4paper, margin=3cm]{geometry}
+\usepackage{pagenote}
+\usepackage{anyfontsize}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath}    
+\usepackage{amssymb}    
+\usepackage{amsfonts}   
+\usepackage{amsthm}
+\usepackage{mathtools} 
+\usepackage{bm}         
+\usepackage{mathrsfs}   
+\usepackage{esint}      
+\usepackage{cancel}     
+\usepackage{nicefrac}   
+\usepackage{siunitx}    
+\usepackage{array}      
+\usepackage{arydshln}  
+\usepackage{ytableau}   
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{pict2e}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\definecolor{lightred}{rgb}{1,0.6,0.6}
+\usepackage{stmaryrd}
+\usepackage{comment}
+\usepackage{multicol}
+\usepackage{enumitem}
+
+\usepackage{tgpagella}
+\usepackage{eulervm}
+%\usepackage[euler-digits]{eulervm}
+
+\usetikzlibrary{babel}
+\theoremstyle{definition}
+
+\newtheorem{definition}{Definição}[section]  
+\newtheorem{example}{Exemplo}[section]       
+\newtheorem{theorem}{Teorema}[section]     
+\newtheorem{proposition}{Proposição}[section] 
+\newtheorem{corollary}{Colorário}[section] 
+\newtheorem{lemma}{Lema}[section]  
+
+
+\newtcolorbox{mybox}[2]{
+  colback=#1!10!white, 
+  colframe=#1!50!black, 
+  boxrule=0.5pt,        
+  sharp corners,        
+  fonttitle=\bfseries,  
+  breakable,            
+  title={\textbf{#2}},  
+}
+
+
+\renewenvironment{definition}[1][]{
+  \refstepcounter{definition}
+  \begin{mybox}{green}{Definição \thesection.\arabic{definition}}
+}{\end{mybox}}
+
+\renewenvironment{example}[1][]{
+  \refstepcounter{example}
+  \begin{mybox}{yellow}{Exemplo \thesection.\arabic{example}}
+}{\end{mybox}}
+
+\renewenvironment{theorem}[1][]{
+  \refstepcounter{theorem}
+  \begin{mybox}{blue}{Teorema \thesection.\arabic{theorem}}
+}{\end{mybox}}
+
+\renewenvironment{proposition}[1][]{
+  \refstepcounter{proposition}
+  \begin{mybox}{red}{Proposição \thesection.\arabic{proposition}}
+}{\end{mybox}}
+
+\renewenvironment{corollary}[1][]{
+  \refstepcounter{corollary}
+  \begin{mybox}{lightred}{Corolário \thesection.\arabic{corollary}}
+}{\end{mybox}}
+
+\renewenvironment{lemma}[1][]{
+  \refstepcounter{lemma}
+  \begin{mybox}{cyan}{Lema \thesection.\arabic{lemma}}
+}{\end{mybox}}
+
+\begin{comment}
+\newcommand{\titlepagecontent}{
+    \begin{center}
+        \vspace*{2cm} 
+        {\Large Apostila Álgebra Linear} \\[2cm]
+        
+        {\Large Marco Vieira Busetti} \\[2.5cm]
+        
+        {\Large Universidade Tecnológica Federal do Paraná} \\[0.5cm]
+        {\Large Curitiba, Outubro de 2026}
+    \end{center}
+}
+\end{comment}
+
+\newcommand{\titlepagecontent}{
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[opacity=0.5, inner sep=0pt, anchor=south east] 
+        at ([xshift=6cm, yshift=-1cm]current page.south east) 
+        {\includegraphics[width=1.4\textwidth]{imgs/peticov.jpg}};
+    \end{tikzpicture}
+    
+    
+    \vspace*{2cm}
+    \begin{flushleft}
+        \hspace*{0.5cm} 
+        \begin{minipage}{0.8\textwidth} 
+            {\Huge\bfseries Álgebra Linear} \\[1.2cm] 
+            
+            {\Large Marco Vieira Busetti} \\[4.2cm]
+            
+            %{\large Universidade Tecnológica Federal do Paraná} \\[0.5cm]
+            %{\large Curitiba, Novembro de 2024}
+        \end{minipage}
+    \end{flushleft}
+    \clearpage
+}
+
+
+\newcommand{\trianglechar}{
+  \mathrel{
+    \unitlength=1mm
+    \begin{picture}(5,3)(0,-1.5)
+      \polyline(0,0)(4,1.5)(4,-1.5)(0,0)
+      \polyline(1.25,0)(3,0.75)(3,-0.75)(1.25,0)
+    \end{picture}
+  }
+}
+
+\newcommand{\trianglechareq}{
+  \mathrel{
+    \unitlength=1mm
+    \begin{picture}(5,3)(0,-1.5)
+      \polyline(0,0)(4,1.5)(4,-1.5)(0,0)
+      \polyline(1.25,0)(3,0.75)(3,-0.75)(1.25,0)
+      \polyline(0,-1.9)(4,-1.9)
+    \end{picture}
+  }
+}
+
+\newtheoremstyle{no-italic}  
+  {3pt}   
+  {3pt}   
+  {\normalfont} 
+  {}      
+  {\bfseries} 
+  {.}     
+  { }     
+  {}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \titlepagecontent
+\end{titlepage}
+
+\fontsize{12}{14}\selectfont
+
+\tableofcontents
+
+
+\chapter*{Lista de Símbolos e Notações}
+\addcontentsline{toc}{chapter}{Lista de Símbolos e Notações}
+\markboth{LISTA DE SÍMBOLOS E NOTAÇÕES}{LISTA DE SÍMBOLOS E NOTAÇÕES}
+
+Abaixo estão listadas as principais notações utilizadas ao longo deste trabalho.
+\vspace{0.8cm}
+
+\begin{comment}
+\setlength{\columnsep}{1.5cm} 
+\begin{multicols}{2}
+
+%    \begin{center}\textbf{Geral e Conjuntos}\end{center}
+    \begin{description}[leftmargin=2.2cm, labelwidth=1.8cm, labelsep=0.4cm, itemsep=0.3cm, font=\normalfont]
+        \item[{ $\mathbb{N}$ }] Conjunto dos números naturais: $\{0, 1, 2,\ldots\}$
+        \item[{ $\mathbb{Z}$ }] Conjunto dos números inteiros: $\{\ldots, -1,0,1,2,\ldots\}$
+        \item[{ $\mathbb{Q}$ }] Conjunto dos números racionais
+        \item[{ $\mathbb{R}$ }] Conjunto dos números reais
+        \item[{ $\mathbb{C}$ }] Conjunto dos números complexos
+        \item[{ $\mathbb{U}$ }] Círculo unitário (conjunto dos números complexos de módulo 1)
+        \item[{ $X^*$ }] Conjunto $X$ excluindo o elemento nulo \\(ex: $\mathbb{R}^* = \mathbb{R} \setminus \{0\}$)
+        \item[{ $X_+$ }] Subconjunto dos elementos não negativos de $X$ (ex: $\mathbb{Z}_+ = \mathbb{N}$)
+        \item[{ $X_{+}^{*}$ }] Subconjunto dos elementos estritamente positivos de $X$
+        \item[{ $X_{\geq n}$ }] Subconjunto dos elementos de $X$ que são maiores ou iguais a $n$ (ex: $\mathbb{Z}_{\geq 2} = \{2,3,4,\ldots\}$)
+        \item[{ $X_{< n}$ }] Subconjunto dos elementos de $X$ que são estritamente menores que $n$
+        \item[{ $A \times B$ }] Produto cartesiano entre os conjuntos $A$ e $B$
+        \item[{ $\text{Card}(X)$ }] Cardinalidade do conjunto $X$
+        \item[{ $\llbracket a, b\rrbracket$ }] Conjunto de inteiros compreendidos entre $a$ e $b$
+        \item[{ $a \mid b$ }] O inteiro $a$ divide o inteiro $b$
+        \item[{ $a \nmid b$ }] O inteiro $a$ não divide o inteiro $b$
+    \end{description}
+    
+    %\columnbreak
+    
+    \begin{description}[leftmargin=2.2cm, labelwidth=1.8cm, labelsep=0.4cm, itemsep=0.3cm, font=\normalfont]
+        \item[{ $e$ ou $e_G$}] Elemento neutro do grupo $G$
+        \item[{ $|G|$ }] Ordem do grupo $G$
+        \item[{ $H \le G$ }] $H$ é subgrupo de $G$
+        \item[{ $H < G$ }] $H$ é subgrupo próprio de $G$
+        \item[{ $N \trianglelefteq G$ }] $N$ é subgrupo normal de $G$
+        \item[{ $N \triangleleft G$ }] $N$ é subgrupo normal próprio de $G$
+        \item[{ $H \trianglechareq G$ }] $H$ é subgrupo característico de $G$
+        \item[{ $[G:H]$ }] Índice do subgrupo $H$ em $G$
+        \item[{ $G/H$ }] Grupo quociente de $G$ por $H$
+        \item[{ $Z(G)$ }] Centro do grupo $G$
+        \item[{ $\langle X \rangle$ }] Subgrupo gerado pelo conjunto $X$
+        \item[{ $[x,y]$ }] Comutador dos elementos $x$ e $y$
+        \item[{ $G'$ ou $G^{(1)}$ }] Grupo derivado (ou dos comutadores) de $G$
+        \item[{ $G^{ab}$ }] Abelianização de $G$ (quociente $G/G'$)
+        \item[{ $\mathcal{O}(g)$ }] Ordem do elemento $g$
+        \item[{ $\ker \varphi$ }] Núcleo do homomorfismo $\varphi$
+        \item[{ $\operatorname{Im} \varphi$ }] Imagem do homomorfismo $\varphi$
+        \item[{ $\operatorname{Hom}(G,\mathcal{G})$ }] Conjunto de homomorfismos de $G$ em $\mathcal{G}$
+        \item[{ $\operatorname{Aut}(G)$ }] Grupo de automorfismos de $G$
+        \item[{ $\operatorname{Inn}(G)$ }] Grupo de automorfismos internos de $G$
+        \item[{ $G \cong \mathcal{G}$ }] Isomorfismo entre $G$ e $\mathcal{G}$
+    \end{description}
+
+%    \begin{center}\textbf{Produtos de Grupos}\end{center}
+    \begin{description}[leftmargin=2.2cm, labelwidth=1.8cm, labelsep=0.4cm, itemsep=0.3cm, font=\normalfont]
+        \item[{ $\prod G_i$ }] Produto direto externo de grupos
+        \item[{ $\bigodot H_i$ }] Produto direto interno de grupos
+        \item[{ $H \rtimes K$ }] Produto semidireto interno
+        \item[{ $H \rtimes_\theta K$ }] Produto semidireto externo associado a $\theta$
+    \end{description}
+    
+    %\columnbreak
+
+%    \begin{center}\textbf{Grupos Específicos}\end{center}
+    \begin{description}[leftmargin=2.2cm, labelwidth=1.8cm, labelsep=0.4cm, itemsep=0.3cm, font=\normalfont]
+        \item[{ $GL_n(\mathbb{K})$ }] Grupo linear geral sobre $\mathbb{K}$
+        \item[{ $SL_n(\mathbb{K})$ }] Grupo linear especial sobre $\mathbb{K}$
+        \item[{ $\mathbb{Z}/n\mathbb{Z}$ }] Grupo dos inteiros módulo $n$
+        \item[{ $\mathbb{Z}_{p}^{*}$ }] Grupo multiplicativo dos inteiros invertíveis módulo $p$
+        \item[{ $\mathfrak{S}_X$ ou $\mathfrak{S}_n$ }] Grupo simétrico do conjunto $X$ (ou de grau $n$)
+        \item[{ $\mathfrak{A}_X$ ou $\mathfrak{A}_n$ }] Grupo alternado do conjunto $X$ (ou de grau $n$)
+        \item[{ $\mathcal{K}$ }] Grupo de Klein
+        \item[{ $\mathfrak{K}$ }] Grupo simétrico de Klein
+    \end{description}
+    
+    %\begin{center}\textbf{Permutações e Ações}\end{center}
+    \begin{description}[leftmargin=2.2cm, labelwidth=1.8cm, labelsep=0.4cm, itemsep=0.3cm, font=\normalfont]
+        \item[{ $\text{id}_X$ }] Permutação identidade (ou função identidade)
+        \item[{ $\text{supp}(\sigma)$ }] Suporte da permutação $\sigma$
+        \item[{ $\mathscr{I}(\sigma)$ }] Número de inversões da permutação $\sigma$
+        \item[{ $\varepsilon(\sigma)$ }] Assinatura da permutação $\sigma$
+        \item[{ $G \curvearrowright X$ }] $G$ age à esquerda sobre $X$
+        \item[{ $\mathscr{O}(x)$ }] Órbita do elemento $x$
+        \item[{ $X/G$ }] Conjunto das órbitas da ação de $G$ sobre $X$
+        \item[{ $G_x$ }] Estabilizador (grupo de isotropia) de $x$
+        %\item[{ $\text{Fix}(X)$ }] Conjunto de pontos fixos da ação
+    \end{description}
+
+\end{multicols}
+
+\end{comment}
+
+\newpage
+
+\chapter{Noções sobre Grupos, Anéis e Corpos}
+
+\section{Definição e exemplos de grupos}
+
+\section{Definição e exemplos de anéis}
+
+\chapter{Generalidades sobre Espaços Vetoriais}
+
+\section{Espaços Vetoriais}
+
+\begin{definition}
+
+Seja $(\mathbb{K}, \oplus, \odot)$ um corpo e $E$ um conjunto não vazio. Dizemos que $E$ munido das leis interna e externa, respectivamente:
+
+\[
++\;:
+\begin{array}{r c l}
+  E\times E &\to &  E \\
+  (x,y) &\mapsto & x+y
+\end{array}
+\qquad \text{e,} \qquad
+\cdot\;:
+\begin{array}{r c l}
+  \mathbb{K}\times E &\to & E \\
+  (\lambda, x) &\mapsto & \lambda x
+\end{array}
+\]
+
+\textbf{é um espaço vetorial sobre $\mathbb{K}$} se, e somente se, $(E, +)$ é um grupo abeliano e:
+
+\begin{itemize}
+  \item[(i)] $\lambda(\mu x) = (\lambda \odot \mu)x, \quad \forall x\in E,\; \forall \lambda,\mu\in \mathbb{K}$
+  \item[(ii)] $(\lambda \oplus \mu)x = \lambda x + \mu x, \quad \forall x\in E,\; \forall \lambda,\mu\in \mathbb{K}$
+  \item[(iii)] $\lambda(x+y) = \lambda x + \lambda y, \quad \forall x,y\in E,\; \forall \lambda\in \mathbb{K}$
+  \item[(iv)] $1\cdot x = x, \quad \forall x\in E$
+\end{itemize}
+
+onde $1$ representa o elemento neutro para a multiplicação em $\mathbb{K}$.
+\end{definition}
+
+\textit{Observações:}
+
+\begin{itemize}
+  \item \textit{Chamamos comumente os elementos de $\mathbb{K}$ de \textbf{escalares} e os elementos de $E$ de \textbf{vetores}};
+  \item \textit{Denominamos um espaço vetorial $E$ sobre $\mathbb{K}$ de $\mathbb{K}$-espaço vetorial};
+  \item \textit{Caso não haja ambiguidade, denotamos comumente os mesmos símbolos usuais de soma e produto para as operações do corpo $\mathbb{K}$ e as leis interna e externa do espaço vetorial $E$};
+  \item \textit{Note que a definição de espaço vetorial é equivalente a afirmar que o corpo $\mathbb{K}$ \textbf{age} sobre o grupo abeliano $E$}.
+\end{itemize}
+
+\begin{proposition}
+
+Sejam $\mathbb{K}$ um corpo e $E$ um $\mathbb{K}$-espaço vetorial. Então, $\forall (\lambda,x)\in \mathbb{K}\times E$, temos:
+
+\begin{itemize}
+  \item[(i)] $\lambda 0_E$ e $0x = 0_E$
+  \item[(ii)] $\lambda x = 0_E \implies \lambda = 0$ ou $x = 0_E$
+  \item[(iii)] $(-\lambda)x = \lambda(-x) = -(\lambda x)$
+\end{itemize}
+
+\end{proposition}
+
+\textbf{Demonstração:}
+
+Mostremos primeiramente o item $(i)$. Note que:
+
+\[
+\lambda 0_E = \lambda (0_E + 0_E) = \lambda 0_E + \lambda 0_E \implies \lambda 0_E = 0_E
+\]
+
+Analogamente, temos também que:
+
+\[
+0x = (0+0)x = 0x + 0x \implies 0x = 0_E 
+\]
+
+Note que o item $(ii)$ é trivial pela contrapositiva partindo do item $(i)$.
+
+Mostremos, por fim, o item $(iii)$. Note que:
+
+\[
+(-\lambda + \lambda)x = 0x \iff (-\lambda)x + \lambda x = 0_E \iff (-\lambda)x = -(\lambda x)
+\]
+
+A prova é análoga para $\lambda(-x) = -(\lambda x)$.
+
+\qed
+
+\textit{Observação: Denotaremos $(-\lambda)x$ como $-\lambda x$ e $x+(-y)$ como $x-y$.}
+
+\section{Subespaços vetoriais}
+
+\begin{definition}
+
+Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto não vazio de $E$. Dizemos que $F$ é um \textbf{subespaço vetorial de $E$} se, e somente se, $F$ é um $\mathbb{K}$-espaço vetorial com as leis interna e externa de $E$.  
+
+\end{definition}
+
+\hypertarget{prop221}{}
+\begin{proposition}
+
+Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto de $E$. Logo, $F$ é um subespaço vetorial de $E$ se, e somente se:
+
+\begin{itemize}
+  \item[(i)] $F \neq \emptyset$ 
+  \item[(ii)] $x,y\in F \implies x+y\in F$
+  \item[(iii)] $(x,\lambda)\in F\times\mathbb{K} \implies \lambda x \in F$
+\end{itemize}
+
+\end{proposition}
+
+\textbf{Demonstração:}
+
+Note que, se $F$ é subespaço vetorial de $E$, então evidentemente $0_E\in F$ e logo $F\neq\emptyset$ e para quaisquer $x,y\in F$ e $\lambda\in \mathbb{K}$ temos $x+y\in F$ e $\lambda x\in \mathbb{K}$. 
+
+Suponha, agora, que $F\neq\emptyset$ e que para quaisquer $x,y\in F$ e $\lambda\in\mathbb{K}$ temos $x+y\in F$ e $\lambda x\in F$. Note que os axiomas referentes à lei externa de $E$ são trivialmente verificados para $F$, assim como a associatividade e comutatividade para a lei interna.
+
+Resta mostrarmos que $0_E\in F$ e que para todo $x\in F$ existe $-x\in F$ tal que $x+(-x) = x-x = 0_E$.
+
+Como $F\neq \emptyset$, então existe pelo menos um elemento $x\in F$. Além disso, como $\lambda x\in F$ para quaisquer $\lambda\in \mathbb{K}$, temos em particular que $0x = 0_E \in F$.
+
+Analogamente, temos diretamente que $(-1)x = -x\in F$.
+
+Portanto, concluímos que $F$ é um subespaço vetorial de $E$.
+
+\qed
+
+\textit{Observação:}
+
+\begin{proposition}
+
+Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto de $E$. Logo, $F$ é um subespaço vetorial de $E$ se, e somente se:
+
+\begin{itemize}
+  \item[(i)] $F \neq \emptyset$ 
+  \item[(ii)] $x,y\in F, \lambda,\mu\in \mathbb{K} \implies \lambda x+\mu y\in F$
+\end{itemize}
+
+\end{proposition}
+
+\textbf{Demonstração:}
+
+De forma análoga à demonstração da \hyperlink{prop221}{\textbf{Proposição 2.2.1}}, se $F$ for um subespaço vetorial de $E$, então é trivial que os itens $(i)$ e $(ii)$ são satisfeitos.
+
+Suponha, agora, que os itens $(i)$ e $(ii)$ sejam verdadeiros. Analogamente à demonstração da \hyperlink{prop221}{\textbf{Proposição 2.2.1}}, basta mostrarmos que $0_E\in F$ e que para todo elemento $x\in F$ existe um inverso $-x\in F$.
+
+Note que, para qualquer $x\in F$, temos:
+
+\[
+0_E = 0x + 0x\in F
+\]
+
+Logo, $0_E\in F$. Ainda, perceba que podemos reescrever $0_E$ como $0x$ para qualquer $x\in F$. Portanto, para um dado $x\in F$, temos ainda que:
+
+\[
+-x = (-1)x = 0_E + (-1)x = 0x + (-1)x \in F
+\]
+
+Logo, $F$ é subespaço vetorial de $E$.
+
+\qed
+
+\begin{proposition}
+Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $\{F_i\}_{i\in I}$ uma família de subespaços vetoriais de $E$ indexados por $I$. Então:
+
+\begin{itemize}
+  \item[(i)] $\bigcap_{i\in I} F_i$ é subespaço vetorial de $E$.  
+  \item[(ii)] $\bigcup_{i\in I} F_i$ é subespaço vetorial de $E$ se, e somente se, $\forall i,j\in I,\; \exists k\in I$ tal que $F_i\subseteq F_k$ e $F_j\subseteq F_k$ 
+  \item[(iii)] $E\setminus F_i$ não é subespaço vetorial de $E$ para qualquer $i\in I$.
+\end{itemize}
+
+\end{proposition}
+
+\textbf{Demonstração:}
+
+Mostremos, primeiramente, o item $(i)$. Para isso, basta mostrarmos os itens da \hyperlink{prop221}{\textbf{Proposição 2.2.1}}.
+
+Note que $0_E\in \bigcap_{i\in I} F_i$, trivialmente, uma vez que $F_i$ é subespaço vetorial de $E$ para todo $i\in I$.
+
+Tomemos $x,y\in \bigcap_{i\in I} F_i$. Então, para todo $i\in I$, temos que $x,y\in F_i$ e, como $F_i$ é subespaço vetorial de $E$ para todo $i\in I$, deduzimos que $x+y\in F_i$, o que implica que $x+y\in \bigcap_{i\in I} F_i$.
+
+A prova que $\lambda x \in \bigcap_{i\in I} F_i,\; \forall (\lambda, x)\in \mathbb{K}\times \bigcap_{i\in I} F_i$ é análoga.
+
+Mostremos, agora, o item $(ii)$. Suponha inicialmente que para todo $i,j\in I,\;\exists k\in I$ tal que $F_i\subseteq F_k$ e $F_j\subseteq F_k$.
+
+Note novamente que, trivialmente, temos $0_E\in \bigcup_{i\in I} F_i$.
+
+Tomemos $x,y\in \bigcup_{i\in I} F_i$.
+
+Por fim, para o item $(iii)$, note que $E\setminus F_i$ jamais será subespaço vetorial de $E$ para qualquer $i\in F_i$, pois $0_E \notin E\setminus F_i$. 
+
+\qed
+
+\end{document}
