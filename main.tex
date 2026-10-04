@@ -409,18 +409,22 @@ Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq 
 
 De forma análoga à demonstração da \hyperlink{prop221}{\textbf{Proposição 2.2.1}}, se $F$ for um subespaço vetorial de $E$, então é trivial que os itens $(i)$ e $(ii)$ são satisfeitos.
 
-Suponha, agora, que os itens $(i)$ e $(ii)$ sejam verdadeiros. Analogamente à demonstração da \hyperlink{prop221}{\textbf{Proposição 2.2.1}}, basta mostrarmos que $0_E\in F$ e que para todo elemento $x\in F$ existe um inverso $-x\in F$.
-
-Note que, para qualquer $x\in F$, temos:
+Suponha, agora, que os itens $(i)$ e $(ii)$ sejam verdadeiros. Ora, nesse caso, como $F\neq\emptyset$, temos que, para qualquer $x\in F$:  
 
 \[
 0_E = 0x + 0x\in F
 \]
 
-Logo, $0_E\in F$. Ainda, perceba que podemos reescrever $0_E$ como $0x$ para qualquer $x\in F$. Portanto, para um dado $x\in F$, temos ainda que:
+Logo, $0_E\in F$. Ainda, note que os outros itens da \hyperlink{prop221}{\textbf{Proposição 2.2.1}} podem ser verificados facilmente. Sendo $x,y\in F$ e $\lambda\in \mathbb{K}$, temos:
 
 \[
--x = (-1)x = 0_E + (-1)x = 0x + (-1)x \in F
+x + y = (1)x + (1)y \in F
+\]
+
+e, 
+
+\[
+\lambda x = \lambda x + 0_E = \lambda x + 0y\in F
 \]
 
 Logo, $F$ é subespaço vetorial de $E$.
@@ -432,7 +436,7 @@ Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $\{F_i\}_{i\
 
 \begin{itemize}
   \item[(i)] $\bigcap_{i\in I} F_i$ é subespaço vetorial de $E$.  
-  \item[(ii)] $\bigcup_{i\in I} F_i$ é subespaço vetorial de $E$ se, e somente se, $\forall i,j\in I,\; \exists k\in I$ tal que $F_i\subseteq F_k$ e $F_j\subseteq F_k$ 
+  \item[(ii)] $\bigcup_{i\in I} F_i$ é subespaço vetorial de $E$ se $\forall i,j\in I,\; \exists k\in I$ tal que $F_i\subseteq F_k$ e $F_j\subseteq F_k$ 
   \item[(iii)] $E\setminus F_i$ não é subespaço vetorial de $E$ para qualquer $i\in I$.
 \end{itemize}
 
@@ -442,7 +446,7 @@ Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $\{F_i\}_{i\
 
 Mostremos, primeiramente, o item $(i)$. Para isso, basta mostrarmos os itens da \hyperlink{prop221}{\textbf{Proposição 2.2.1}}.
 
-Note que $0_E\in \bigcap_{i\in I} F_i$, trivialmente, uma vez que $F_i$ é subespaço vetorial de $E$ para todo $i\in I$.
+Note que $0_E\in \bigcap_{i\in I} F_i$, trivialmente, uma vez que $F_i$ é subespaço vetorial de $E$ para todo $i\in I$ e, portanto, $0_E\in F_i,\; \forall i\in I$.
 
 Tomemos $x,y\in \bigcap_{i\in I} F_i$. Então, para todo $i\in I$, temos que $x,y\in F_i$ e, como $F_i$ é subespaço vetorial de $E$ para todo $i\in I$, deduzimos que $x+y\in F_i$, o que implica que $x+y\in \bigcap_{i\in I} F_i$.
 
@@ -450,11 +454,13 @@ A prova que $\lambda x \in \bigcap_{i\in I} F_i,\; \forall (\lambda, x)\in \math
 
 Mostremos, agora, o item $(ii)$. Suponha inicialmente que para todo $i,j\in I,\;\exists k\in I$ tal que $F_i\subseteq F_k$ e $F_j\subseteq F_k$.
 
-Note novamente que, trivialmente, temos $0_E\in \bigcup_{i\in I} F_i$.
+Note novamente que, trivialmente, $0_E\in \bigcup_{i\in I} F_i$.
 
-Tomemos $x,y\in \bigcup_{i\in I} F_i$.
+Tomando $x,y\in\bigcup_{i\in I} F_i$, temos que $x\in F_i$ e $y\in F_j$ para algum $i,j\in I$. Como $F_i\subseteq F_k$ e $F_j\subseteq F_k$, temos portanto que $x,y\in F_k$. Ainda, como $F_k$ é subespaço vetorial de $E$, temos que $x+y\in F_k$. Portanto, concluímos que $x+y\in \bigcup_{i\in I} F_i$.
 
-Por fim, para o item $(iii)$, note que $E\setminus F_i$ jamais será subespaço vetorial de $E$ para qualquer $i\in F_i$, pois $0_E \notin E\setminus F_i$. 
+A prova que $\lambda x \in \bigcup_{i\in I} F_i, \; \forall (\lambda, x)\in \mathbb{K}\times \bigcup_{i\in I} F_i$ é análoga.
+
+Por fim, para o item $(iii)$, note que $E\setminus F_i$ jamais será subespaço vetorial de $E$ para qualquer $i\in I$, pois $0_E \notin E\setminus F_i$. 
 
 \qed
 
