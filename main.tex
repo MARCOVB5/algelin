@@ -268,17 +268,84 @@ Abaixo estão listadas as principais notações utilizadas ao longo deste trabal
 
 \chapter{Noções sobre Grupos, Anéis e Corpos}
 
+\section{Leis de composição interna e externa}
+
+\hypertarget{def111}{}
+\begin{definition}
+Seja $E$ um conjunto. Chamamos de \textbf{lei de composição interna sobre $E$} a função:
+
+\[
+\star\;:
+\begin{array}{r c l}
+  E\times E &\to &  E \\
+  (x,y) &\mapsto & \star(x,y)\overset{def}{=} x\star y
+\end{array}
+\]
+
+\end{definition}
+
+\hypertarget{def112}{}
+\begin{definition}
+Sejam $E$ e $\Omega$ dois conjuntos. Chamamos de \textbf{lei de composição externa de $\Omega$ sobre $E$} a função:
+
+\[
+\odot\;:
+\begin{array}{r c l}
+  \Omega\times E &\to &  E \\
+  (\lambda,x) &\mapsto & \odot(\lambda,x)\overset{def}{=} \lambda\odot x
+\end{array}
+\]
+
+\end{definition}
+
+\textit{Observação: caso não haja ambiguidade e os conjuntos estejam implícitos no contexto, podemos apenas escrever \textbf{lei de composição interna} ou \textbf{lei interna} e \textbf{lei de composição externa} ou \textbf{lei externa}.}
+
+\begin{example}
+Considere os conjuntos $\mathbb{R}$ e $\mathbb{R}^2$.
+
+A adição usual de elementos de $\mathbb{R}^2$ é uma lei de composição interna sobre $\mathbb{R}^2$:
+\[
++\;:
+\begin{array}{r c l}
+  \mathbb{R}^2\times \mathbb{R}^2 &\to &  \mathbb{R}^2 \\
+  ( (x_1,y_1), (x_2,y_2) ) &\mapsto & (x_1+x_2, y_1+y_2)
+\end{array}
+\]
+
+A multiplicação por um escalar real é uma lei de composição externa de $\mathbb{R}$ sobre $\mathbb{R}^2$:
+\[
+\cdot\;:
+\begin{array}{r c l}
+  \mathbb{R}\times \mathbb{R}^2 &\to &  \mathbb{R}^2 \\
+  (\lambda, (x,y)) &\mapsto & (\lambda x, \lambda y)
+\end{array}
+\]
+\end{example}
+
+\begin{definition}
+Uma lei de composição interna ''$\star$'' sobre um conjunto $E$ é dita:
+
+\begin{itemize}
+  \item[(i)] \textbf{associativa}, se $(x\star y)\star z = x\star(y\star z) = x\star\star z,\; \forall x,y,z\in E$
+  \item[(ii)] \textbf{comutativa}, se $x\star y=y\star x,\; \forall x,y\in E$
+\end{itemize}
+
+
+\end{definition}
+
 \section{Definição e exemplos de grupos}
 
 \section{Definição e exemplos de anéis}
 
 \chapter{Generalidades sobre Espaços Vetoriais}
 
+Em todo este capítulo, $\mathbb{K}$ designa um corpo de característica diferente de $2$.
+
 \section{Espaços Vetoriais}
 
 \begin{definition}
 
-Seja $(\mathbb{K}, \oplus, \odot)$ um corpo e $E$ um conjunto não vazio. Dizemos que $E$ munido das leis interna e externa, respectivamente:
+Seja $E$ um conjunto não vazio e $\oplus$ e $\odot$ as operações de adição e multiplicação para $\mathbb{K}$. Dizemos que $E$ munido das leis interna e externa, respectivamente:
 
 \[
 +\;:
@@ -317,7 +384,7 @@ onde $1$ representa o elemento neutro para a multiplicação em $\mathbb{K}$.
 
 \begin{proposition}
 
-Sejam $\mathbb{K}$ um corpo e $E$ um $\mathbb{K}$-espaço vetorial. Então, $\forall (\lambda,x)\in \mathbb{K}\times E$, temos:
+Seja $E$ um $\mathbb{K}$-espaço vetorial. Então, $\forall (\lambda,x)\in \mathbb{K}\times E$, temos:
 
 \begin{itemize}
   \item[(i)] $\lambda 0_E$ e $0x = 0_E$
@@ -359,14 +426,14 @@ A prova é análoga para $\lambda(-x) = -(\lambda x)$.
 
 \begin{definition}
 
-Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto não vazio de $E$. Dizemos que $F$ é um \textbf{subespaço vetorial de $E$} se, e somente se, $F$ é um $\mathbb{K}$-espaço vetorial com as leis interna e externa de $E$.  
+Sejam $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto não vazio de $E$. Dizemos que $F$ é um \textbf{subespaço vetorial de $E$} se, e somente se, $F$ é um $\mathbb{K}$-espaço vetorial com as leis interna e externa de $E$.  
 
 \end{definition}
 
 \hypertarget{prop221}{}
 \begin{proposition}
 
-Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto de $E$. Logo, $F$ é um subespaço vetorial de $E$ se, e somente se:
+Sejam $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto de $E$. Logo, $F$ é um subespaço vetorial de $E$ se, e somente se:
 
 \begin{itemize}
   \item[(i)] $F \neq \emptyset$ 
@@ -396,7 +463,7 @@ Portanto, concluímos que $F$ é um subespaço vetorial de $E$.
 
 \begin{proposition}
 
-Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto de $E$. Logo, $F$ é um subespaço vetorial de $E$ se, e somente se:
+Sejam $E$ um $\mathbb{K}$-espaço vetorial e $F\subseteq E$ um subconjunto de $E$. Logo, $F$ é um subespaço vetorial de $E$ se, e somente se:
 
 \begin{itemize}
   \item[(i)] $F \neq \emptyset$ 
@@ -431,8 +498,60 @@ Logo, $F$ é subespaço vetorial de $E$.
 
 \qed
 
+\begin{definition}
+Sejam $E$ um $\mathbb{K}$-espaço vetorial e $x_1,\ldots,x_p\in E$. Então o conjunto:
+
+\[
+\operatorname{Vet}\{x_1,\ldots,x_p\}\overset{def}{=} \{y\in E\; ;\; \exists \lambda_1,\ldots,\lambda_p \in \mathbb{K} : y = \lambda_1 x_1 + \ldots + \lambda_p x_p\}
+\]
+
+é um subespaço vetorial de $E$ denominado \textbf{subespaço gerado por} $x_1,\ldots, x_p$. Denominamos-o comumente como $\operatorname{Vet}\{x_1,\ldots,x_p\}$.
+
+\end{definition}
+
+Note que a construção acima é de fato um subespaço vetorial de $E$.
+
+	Tomando $\lambda_1,\ldots,\lambda_p = 0$ temos claramente que $0_E\in \operatorname{Vet}\{x_1,\ldots,x_p\}$ e, por construção, temos que $\lambda y_1 + \mu y_2 \in \operatorname{Vet}\{x_1,\ldots,x_p\}$ para quaisquer $y_1,y_2\in \operatorname{Vet}\{x_1,\ldots,x_p\}$ e $\lambda,\mu\in \mathbb{K}$.
+
+\begin{example}
+Seja $F\subseteq \mathbb{R}^3$ munido das operações usuais de soma e multiplicação para números reais dado por:
+
+\[
+F\overset{def}{=} \{(x,y,z)\in\mathbb{R}^3 \; ; \; 2x+y+3z = 0\}
+\]
+
+Logo, $F$ é um subespaço vetorial de $\mathbb{R}^3$.
+\end{example}
+
+\textbf{Demonstração:}
+
+Note que:
+
+\begin{align*}
+F &= \{(x,y,z) \in \mathbb{R}^3 \; ; \; 2x + y + 3z = 0\} \\
+  &= \{(x,y,z) \in \mathbb{R}^3 \; ; \; y = -2x - 3z\} \\
+  &= \{(x,-2x-3z,z) \in \mathbb{R}^3 \; ; \; x,z \in \mathbb{R}\} \\
+  &= \{(x,-2x,0) + (0,-3z,z) \; ; \; x,z \in \mathbb{R}\} \\
+  &= \{x(1, -2, 0) + z(0,-3,1) \; ; \; x,z \in \mathbb{R}\} \\
+  &= \operatorname{Vet}\{(1,-2,0), (0,-3,1)\}
+\end{align*}
+
+Portanto, deduzimos que $F$ é o subespaço gerado por $(1,-2,0)$ e $(0,-3,1)$.
+
+
+\begin{example}
+Seja $F\subseteq \mathbb{R}^3$ munido das operações usuais de soma e multiplicação para números reais dado por:
+
+\[
+F\overset{def}{=} \{(x,y,z)\in\mathbb{R}^3 \; ; \; 2x+y+3z = 1\}
+\]
+
+Então, evidentemente $F$ não é subespaço vetorial de $\mathbb{R}^3$, pois $(0,0,0)\notin F$.
+\end{example}
+
+
 \begin{proposition}
-Sejam $\mathbb{K}$ um corpo, $E$ um $\mathbb{K}$-espaço vetorial e $\{F_i\}_{i\in I}$ uma família de subespaços vetoriais de $E$ indexados por $I$. Então:
+Sejam $E$ um $\mathbb{K}$-espaço vetorial e $\{F_i\}_{i\in I}$ uma família de subespaços vetoriais de $E$ indexados por $I$. Então:
 
 \begin{itemize}
   \item[(i)] $\bigcap_{i\in I} F_i$ é subespaço vetorial de $E$.  
@@ -463,5 +582,11 @@ A prova que $\lambda x \in \bigcup_{i\in I} F_i, \; \forall (\lambda, x)\in \mat
 Por fim, para o item $(iii)$, note que $E\setminus F_i$ jamais será subespaço vetorial de $E$ para qualquer $i\in I$, pois $0_E \notin E\setminus F_i$. 
 
 \qed
+
+\section{Bases em dimensão finita}
+
+\begin{definition}
+Seja $E$ um $\mathbb{K}$-espaço vetorial. Uma família de vetores $\mathcal{F} \overset{def}{=} \{v_1,\ldots, v_n\}$ de $E$ é dita \textbf{geradora} se, e somente se, $E = \operatorname{Vet}\mathcal{F}$.
+\end{definition}
 
 \end{document}
